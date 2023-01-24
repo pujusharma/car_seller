@@ -1,0 +1,52 @@
+
+    <!-- ***** Call to Action Start ***** -->
+    <section class="section section-bg" id="call-to-action" style="background-image: url(assets/banner-image-1-1920x500.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <br>
+                        <br>
+                        <h2><small><del>$12 999</del></small> <em>$11 779</em></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Call to Action End ***** -->
+
+    <!-- ***** Fleet Starts ***** -->
+    <section class="section" id="trainers">
+        <div class="container">
+      
+
+            <div class="row" id="tabs">
+              <div class="col-lg-4">
+                <ul>
+                  <li id="car_details"><span>Car Details</span></li>
+                  <li id="description"><span>Car Description</span> </li>
+                  <li id="contact"><span>Contact Owner</span></li>
+                </ul>
+              </div>
+              <div class="col-lg-8">
+                <section class='tabs-content' style="width: 100%;">
+                    <%=render partial: "car_details"%>
+                </section>
+              </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Fleet Ends ***** -->
+    <script>
+      $("#description").on("click", function(){
+        $(".tabs-content").html("<%= j render partial: 'description'%>")
+      })
+      $("#car_details").on("click", function(){
+        $(".tabs-content").html("<%= j render partial: 'car_details'%>")
+      })
+      $("#contact").on("click", function(){
+        $(".tabs-content").html("<%= j render partial: 'contact_form'%>")
+      })
+    </script>
+   

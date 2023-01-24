@@ -1,0 +1,85 @@
+<%= form_for :car, url: add_new_car_path do |form| %>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+
+      <%= form.label :condition, "Used/New:"  %>
+      <br>
+        <%= form.select :condition, options_for_select([["New",1],["Old",0]]) %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= form.label :car_type, "Vehicle Type:" %>
+     <br>
+       <%= form.text_field :car_type %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= form.label :make," Make" %>
+      <br>
+      <%= form.text_field :make %>
+    </div>
+    <div class="form-group col-md-6">
+ 
+    <%= form.label :price, :Price%>
+      <br>
+    <%= form.text_field :price %>
+    </div>
+  </div>
+   <div class="form-row">
+    <div class="form-group col-md-6">
+          <%= form.label :model, :Model%>
+      <br>
+    <%= form.text_field :model %>
+    </div>
+      <div class="form-group col-md-6">
+         <%= form.label :mileage, :Mileage%>
+      <br>
+    <%= form.text_field :mileage %>
+    </div>
+  
+  </div>
+   <div class="form-row">
+    <div class="form-group col-md-6">
+           <%= form.label :engine_size, :Engine_size%>
+      <br>
+    <%= form.text_field :engine_size %>
+    </div>
+    <div class="form-group col-md-6">
+           <%= form.label :power, :Power%>
+      <br>
+    <%= form.text_field :power %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+            <%= form.label :doors, :Doors%>
+      <br>
+    <%= form.text_field :doors %>
+    </div>
+    <div class="form-group col-md-6">
+            <%= form.label :number_of_seats, :Number_Of_seats%>
+      <br>
+    <%= form.text_field :number_of_seats %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+             <%= form.label :fuel, :Fuel%>
+      <br>
+    <%= form.text_field :fuel %>
+    </div>
+    <div class="form-group col-md-6">
+            <%= form.label :gearbox, :Gearbox%>
+      <br>
+    <%= form.select :gearbox, options_for_select([["Automatic",1],["Manual",0]]) %>
+    </div>
+
+     <div class="form-group col-md-6">
+        <%= form.label :image %>
+      <br>
+        <%= form.file_field :image %>
+     </div>
+
+  </div>
+  <button type="submit" class="btn btn-primary">Add car</button>
+<% end %>
