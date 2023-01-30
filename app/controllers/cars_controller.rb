@@ -23,6 +23,7 @@ class CarsController < ApplicationController
     @car.image = params["car"]["image"]
     @car.save
     redirect_to root_path
+    
   end
   
   def about
@@ -34,6 +35,10 @@ class CarsController < ApplicationController
 
   def edit 
 
+  end
+
+  def profile
+    
   end
    
   def show 
