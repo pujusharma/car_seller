@@ -1,6 +1,6 @@
 class CarsController < ApplicationController
   skip_before_action :authenticate_user! , only: [:index, :show,]
-  skip_before_action :verify_authenticity_token
+ 
   def index
     @cars = Car.all
   end
@@ -23,28 +23,17 @@ class CarsController < ApplicationController
     @car.image = params["car"]["image"]
     @car.save
     redirect_to root_path
-    
   end
   
   def about
-
 
   end
   def add 
 
   end
 
-  def update_user
-    @user = User.find(current_user.id)
-    @user.update(firstname: params[:firstname], lastname: params[:lastname], contact: params[:contact], username: params[:username], address: params[:address])
-  end
+  def edit 
 
-  def user 
-
-  end
-
-  def userprofile
-    @user = User.find(current_user.id)
   end
    
   def show 
