@@ -6,9 +6,8 @@ Rails.application.routes.draw do
   get '/edit', to: 'cars#index'
   get '/new', to: 'cars#contact'
   get '/details/id', to: 'cars#show', as: "car_details"
-  get '/add_car' , to: "cars#add"
-  get '/profile' , to: "cars#userprofile"
-  post '/add', to: 'cars#addcar',as: "add_new_car"
+  get '/add' , to: "cars#add"
+  post '/add', to: 'cars#add',as: "add_new_car"
   # Define your application ro utes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
   root "cars#index"
