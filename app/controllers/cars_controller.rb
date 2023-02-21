@@ -1,6 +1,7 @@
 class CarsController < ApplicationController
   skip_before_action :authenticate_user! , only: [:index, :show,]
   skip_before_action :verify_authenticity_token
+  
   def index
     @cars = Car.all
   end
@@ -33,6 +34,16 @@ class CarsController < ApplicationController
   def add 
 
   end
+
+
+  def user_update_profile
+    @user = current_user
+    @user.avtar = params[:user][:avtar]
+    @user.save
+    redirect_to "/profile"
+  end
+
+
 
   def update_user
     @user = User.find(current_user.id)

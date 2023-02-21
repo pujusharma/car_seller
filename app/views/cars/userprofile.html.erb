@@ -1,9 +1,25 @@
 <div class="container rounded bg-white mt-5 mb-5">
+
+                   
     <div class="row">
-        <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img  width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg "><span class="font-weight-bold">ROR Developer</span><%= current_user.email %> <span> </span></div>
-        </div>
-        <div class="col-md-5 border-right">
+
+                <div class="col-md-5 border-right">
+
+                        <% if @user.avtar.attached? %>
+                          <%= image_tag @current_user.avtar, :id => "profile_image1", :style => "border-radius: 50%;"%>
+                        <% else %>
+                            <img alt="User Pic" src="https://d30y9cdsu7xlg0.cloudfront.net/png/138926-200.png" id="profile_image1" height="200" width="200" border-radius="50%" ><br>
+                        <% end %>
+                        <br>
+                        <span class="font-weight-bold">ROR Developer</span><br><%= current_user.username %> <br></span><%= current_user.email %> 
+                        <%= form_for :user, :url => { :action => "user_update_profile" } do |f| %>                                
+                            <%=f.file_field :avtar, :id => "profile_image_upload", :class=> "hidden"%><br>
+                            <button class="btn btn-primary profile-button" id="update_user_prof ">Update</button>
+                        <% end %>
+             
+                </div>
+       
+                <div class="col-md-5 border-right">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">User Profile</h4>
@@ -30,10 +46,12 @@
 </div>
 </div>
 <script>
+
 $(document).ready(function() {
     localStorage.setItem("edit_form_active", false);
 });
 $("#update_user").on("click",  function(){
+    console.log($("#profile_image_upload").val());
     if(localStorage.getItem("edit_form_active") == "true"){
         $.ajax({
             url: "/edit_user",
@@ -43,7 +61,7 @@ $("#update_user").on("click",  function(){
                 lastname: $("#lastName").val(),
                 contact: $("#contact").val(),
                 username: $("#username").val(),
-                address: $("#address").val()
+                address: $("#address").val(),
             },
             success: function(){
                 location.reload();
@@ -54,7 +72,12 @@ $("#update_user").on("click",  function(){
         $(this).html("Update profile");
         localStorage.setItem("edit_form_active", true);
     }
+
+
 })
+
+
+
 $("#contact").on("focus",  function(){
     var firstname = $("#firstName").val();
     var lastname = $("#lastName").val();
@@ -78,5 +101,26 @@ $("profile_image").change(function(){
 
 });
 
+    function previewFile() {
+    var preview = document.querySelector('img');
+    var file    = document.querySelector('input[type=file]').files[0];
+    var reader  = new FileReader();
+
+    reader.addEventListener("load", function () {
+        preview.src = reader.result;
+    }, false);
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+    }
+    $(function() {
+        $('#profile_image1').on('click', function() {
+            $('#profile_image_upload').click();
+        });
+        $("#profile_image_upload").hide();
+    });
+    
+    
 
 </script>
